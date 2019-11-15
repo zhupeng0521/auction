@@ -15,6 +15,8 @@ import { ProductService } from './shared/product.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { HttpModule }from '@angular/http';
+import { WebSocketService } from './shared/web-socket.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { HttpModule }from '@angular/http';
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,WebSocketService,
+  {provide:LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
